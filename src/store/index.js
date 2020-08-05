@@ -1,11 +1,13 @@
-import Vue from "vue";
-import Vuex from "vuex";
+import Vuex from 'vuex'
+import credit from './modules/credit'
+import products from './modules/products'
 
-Vue.use(Vuex);
-
-export default new Vuex.Store({
+export default Vuex.createStore({
   state: {},
   mutations: {},
   actions: {},
-  modules: {}
-});
+  modules: {
+    credit,
+    products,
+  },
+})
