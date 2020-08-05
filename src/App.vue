@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <topbar />
-    <router-view />
+    <div class="content">
+      <router-view />
+    </div>
   </div>
 </template>
 
@@ -14,3 +16,8 @@ export default {
   },
 }
 </script>
+<style>
+.content {
+  padding: 68px 8px;
+}
+</style>
