@@ -1,37 +1,31 @@
 <template>
-  <div v-for="product in products" :key="product.id">
+  <div v-for="product in products" :key="product.id" class="row">
+    <div>{{ product.name }}</div>
     <div>
-      <a href="#" @click.prevent="select(product)">{{ product.name }}</a>
-      <button @click="remove(product)">Eliminar</button>
+      <button @click="remove(product)" class="small">
+        <img src="../assets/delete-white-24dp.svg" alt="Delete" />
+      </button>
     </div>
   </div>
 </template>
 
 <script>
-import { useStore } from 'vuex'
 import useProductHandler from '@/composition/useProductHandler'
-import { computed } from 'vue'
 
 export default {
   name: 'ProductList',
   setup() {
-    const store = useStore()
-    const handler = useProductHandler()
-    const products = computed(() => store.state.products.products)
-
-    const select = (product) => handler.select(product)
-    const remove = (product) => {
-      if (!confirm(`¿Quieres eliminar el producto ${product.name}?`)) {
-        return
-      }
-      handler.remove(product)
-    }
-
     return {
-      products,
-      select,
-      remove,
+      ...useProductHandler(),
     }
   },
 }
 </script>
+
+<style scoped>
+.row {
+  line-height: 40px;
+  border-bottom: 1px solid #ccc;
+  padding-top: 8px;
+}
+</style>

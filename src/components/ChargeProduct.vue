@@ -2,14 +2,14 @@
 <template>
   <form action="#" @submit.prevent="charge">
     <select v-model="productId">
-      <option :value="null">-- Seleccionar --</option>
+      <option :value="null">Selecciona tipo</option>
       <option
         v-for="product in products"
         :key="product.id"
         :value="product.id"
       >{{ product.name }} - {{ product.price }}€</option>
     </select>
-    <button>Anotar</button>
+    <button class="block">Anotar</button>
   </form>
 </template>
 
@@ -44,3 +44,9 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+select {
+  width: 100%;
+}
+</style>

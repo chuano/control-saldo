@@ -18,6 +18,6 @@ export default {
 </script>
 <style>
 .content {
-  padding: 68px 8px;
+  padding-top: 62px;
 }
 </style>

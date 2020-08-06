@@ -2,7 +2,7 @@
   <div id="topbar">
     <div class="icon-column">
       <router-link :to="{ name: 'Home' }" v-if="isProductsRoute">
-        <img src="../assets/keyboard_backspace-white-36dp.svg" alt="Back" />
+        <img src="../assets/keyboard_backspace-white-36dp.svg" width="36" height="36" alt="Back" />
       </router-link>
     </div>
     <div class="title-column">
@@ -10,7 +10,7 @@
     </div>
     <div class="icon-column">
       <router-link :to="{ name: 'Products' }" v-if="!isProductsRoute">
-        <img src="../assets/settings-white-36dp.svg" alt="Settings" />
+        <img src="../assets/settings-white-36dp.svg" width="36" height="36" alt="Settings" />
       </router-link>
     </div>
   </div>
@@ -46,7 +46,7 @@ export default {
   width: 100vw;
 }
 .icon-column {
-  width: 36px;
+  width: 32px;
   padding: 0 12px;
 }
 .title-column {
@@ -56,7 +56,7 @@ h1 {
   margin: 0;
   padding: 0;
   font-size: 20px;
-  font-weight: normal;
+  font-weight: bold;
   line-height: 44px;
   color: #fff;
   opacity: 0.95;

@@ -1,7 +1,9 @@
 <template>
   <form action="#" @submit.prevent="addCredit">
     <input type="number" step="0.5" placeholder="Importe" v-model="credit" />
-    <button>Agregar saldo</button>
+    <button>
+      <img src="../assets/add-white-36dp.svg" alt="Add" />
+    </button>
   </form>
 </template>
 
@@ -27,3 +29,14 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+button {
+  vertical-align: middle;
+  margin-top: -1px;
+  width: calc(30% - 9px);
+}
+input {
+  width: calc(70% - 9px);
+}
+</style>

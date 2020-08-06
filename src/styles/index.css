@@ -6,3 +6,49 @@ body {
   font-family: sans-serif;
   color: #555;
 }
+select,
+option,
+input {
+  color: #555;
+  margin: 8px 0;
+  border-radius: 3px;
+  outline: 0;
+  height: 48px;
+  font-size: 16px;
+  padding: 0 8px;
+  border-width: 1px;
+}
+.container {
+  padding: 16px;
+}
+h2 {
+  font-size: 24px;
+  font-weight: normal;
+  margin: 0;
+  margin-bottom: 8px;
+}
+button {
+  height: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 0 16px;
+  background-color: crimson;
+  color: #fff;
+  border: 0;
+  border-radius: 3px;
+  outline: 0;
+}
+button.block {
+  width: 100%;
+}
+button.small {
+  height: 36px;
+  font-size: 14px;
+  padding: 0 8px;
+}
+.row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}

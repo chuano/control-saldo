@@ -1,0 +1,13 @@
+{
+  "appId": "dev.chuano.controlSaldo",
+  "appName": "Control de saldo",
+  "bundledWebRuntime": false,
+  "npmClient": "yarn",
+  "webDir": "dist",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}
