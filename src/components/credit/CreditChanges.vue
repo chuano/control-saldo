@@ -1,10 +1,8 @@
 <template>
   <select v-model="year" v-if="showYear">
-    <option
-      v-for="currentYear in creditChangeYears"
-      :key="currentYear"
-      :value="currentYear"
-    >{{ currentYear }}</option>
+    <option v-for="currentYear in creditChangeYears" :key="currentYear" :value="currentYear">
+      {{ currentYear }}
+    </option>
   </select>
 
   <div v-for="change in changes" :key="change.id" class="list-row">

@@ -3,11 +3,9 @@
   <form action="#" @submit.prevent="charge">
     <select v-model="productId">
       <option :value="null">Selecciona tipo</option>
-      <option
-        v-for="product in products"
-        :key="product.id"
-        :value="product.id"
-      >{{ product.name }} - {{ product.price }}€</option>
+      <option v-for="product in products" :key="product.id" :value="product.id">
+        {{ product.name }} - {{ product.price }}€
+      </option>
     </select>
     <button class="block">Anotar</button>
   </form>
