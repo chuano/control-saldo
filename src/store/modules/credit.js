@@ -1,5 +1,5 @@
 const state = {
-  credit: parseInt(localStorage.getItem('credit') ?? '0'),
+  credit: parseFloat(localStorage.getItem('credit') ?? '0'),
   changes: JSON.parse(localStorage.getItem('creditChanges') ?? '[]'),
 }
 
