@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 <template>
   <form action="#" @submit.prevent="charge">
     <select v-model="productId">
