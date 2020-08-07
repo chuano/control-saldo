@@ -2,30 +2,27 @@
   <form action="#" @submit.prevent="addCredit">
     <input type="number" step="0.5" placeholder="Importe" v-model="credit" />
     <button>
-      <img src="../assets/add-white-36dp.svg" alt="Add" />
+      <img src="../../assets/add-white-36dp.svg" alt="Add" />
     </button>
   </form>
 </template>
 
 <script>
 import { ref } from 'vue'
-import useCreditHandler from '@/composition/useCreditHandler'
+import useAddCreditChange from '../../composition/credit/useAddCreditChange'
 
 export default {
   name: 'CreditForm',
   setup() {
     const credit = ref(null)
-    const handler = useCreditHandler()
+    const { addCreditChange } = useAddCreditChange()
 
-    const addCredit = () => {
-      handler.creditChange({ date: new Date(), amount: credit.value, description: 'Agregar saldo' })
+    function addCredit() {
+      addCreditChange(credit.value, 'Agregar saldo')
       credit.value = null
     }
 
-    return {
-      credit,
-      addCredit,
-    }
+    return { credit, addCredit }
   },
 }
 </script>

@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import ProductForm from '@/components/ProductForm'
-import ProductList from '@/components/ProductList'
+import ProductForm from '../components/products/ProductForm'
+import ProductList from '../components/products/ProductList'
 
 export default {
   name: 'Products',

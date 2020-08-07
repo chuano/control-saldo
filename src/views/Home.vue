@@ -10,10 +10,10 @@
 </template>
 
 <script>
-import Tabsbar from '@/components/Tabsbar'
-import CreditViewer from '@/components/CreditViewer'
-import ChargeProduct from '@/components/ChargeProduct'
-import CreditChanges from '@/components/CreditChanges'
+import Tabsbar from '../components/Tabsbar'
+import CreditViewer from '../components/credit/CreditViewer'
+import ChargeProduct from '../components/credit/ChargeProduct'
+import CreditChanges from '../components/credit/CreditChanges'
 
 export default {
   name: 'Home',

@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import Card from '@/components/Card'
+import Card from '../../components/Card'
 import { useStore } from 'vuex'
 import { computed } from 'vue'
 
@@ -17,10 +17,7 @@ export default {
     const credit = computed(() => store.state.credit.credit)
     const color = computed(() => (credit.value > 0 ? 'green' : 'red'))
 
-    return {
-      credit,
-      color,
-    }
+    return { credit, color }
   },
 }
 </script>

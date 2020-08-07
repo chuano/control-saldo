@@ -16,31 +16,27 @@
 <script>
 import { useStore } from 'vuex'
 import { computed, ref } from 'vue'
-import useCreditHandler from '@/composition/useCreditHandler'
+import useAddCreditChange from '../../composition/credit/useAddCreditChange'
 
 export default {
   name: 'ChargeProduct',
   setup() {
+    const { addCreditChange } = useAddCreditChange()
     const store = useStore()
-    const handler = useCreditHandler()
     const products = computed(() => store.state.products.products)
     const productId = ref(null)
 
-    const charge = () => {
+    function charge() {
       const product = products.value.find((p) => p.id === productId.value)
       if (!product) {
         alert('Selecciona un producto')
         return
       }
-      handler.creditChange({ date: new Date(), amount: product.price * -1, description: product.name })
+      addCreditChange(product.price * -1, product.name)
       productId.value = null
     }
 
-    return {
-      products,
-      productId,
-      charge,
-    }
+    return { products, productId, charge }
   },
 }
 </script>
