@@ -17,6 +17,17 @@ input {
   font-size: 16px;
   padding: 0 8px;
   border-width: 1px;
+  font-family: sans-serif;
+}
+input.h2 {
+  width: calc(75% - 9px);
+  border: 0;
+  font-size: 24px;
+  font-weight: normal;
+  margin: 0;
+  margin-bottom: 8px;
+  height: auto;
+  padding: 0;
 }
 .container {
   padding: 16px;

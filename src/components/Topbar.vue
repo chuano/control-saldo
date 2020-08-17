@@ -1,15 +1,17 @@
 <template>
   <div id="topbar">
     <div class="icon-column">
-      <router-link :to="{ name: 'Home' }" v-if="isProductsRoute">
+      <router-link :to="backUrl" v-if="backUrl">
         <img src="../assets/keyboard_backspace-white-36dp.svg" width="36" height="36" alt="Back" />
       </router-link>
     </div>
+
     <div class="title-column">
-      <h1>Saldo</h1>
+      <h1>{{ title }}</h1>
     </div>
+
     <div class="icon-column">
-      <router-link :to="{ name: 'Products' }" v-if="!isProductsRoute">
+      <router-link :to="{ name: 'ActivitySettingsView', params: { id: $route.params.id } }" v-if="inActivity">
         <img src="../assets/settings-white-36dp.svg" width="36" height="36" alt="Settings" />
       </router-link>
     </div>
@@ -17,16 +19,17 @@
 </template>
 
 <script>
-import { useRoute } from 'vue-router'
-import { computed } from 'vue'
+import useTopbar from '../composition/useTopbar'
+
 export default {
   name: 'Topbar',
   setup() {
-    const route = useRoute()
-    const isProductsRoute = computed(() => route.name === 'Products')
+    const { title, backUrl, inActivity } = useTopbar()
 
     return {
-      isProductsRoute,
+      title,
+      backUrl,
+      inActivity,
     }
   },
 }

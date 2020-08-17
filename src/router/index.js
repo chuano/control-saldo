@@ -1,23 +1,35 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import Home from '../views/Home.vue'
-import Products from '../views/Products.vue'
-import CreditHistory from '../views/CreditHistory.vue'
+import ActivityView from '../views/ActivityView.vue'
+import ActivityListView from '../views/ActivityListView.vue'
+import ActivityHistoryView from '../views/ActivityHistoryView.vue'
+import NewActivityView from '../views/NewActivityView.vue'
+import ActivitySettingsView from '../views/ActivitySettingsView.vue'
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home,
+    name: 'ActivityListView',
+    component: ActivityListView,
   },
   {
-    path: '/products',
-    name: 'Products',
-    component: Products,
+    path: '/new_activity',
+    name: 'NewActivityView',
+    component: NewActivityView,
   },
   {
-    path: '/credit-history',
-    name: 'CreditHistory',
-    component: CreditHistory,
+    path: '/activity/:id',
+    name: 'ActivityView',
+    component: ActivityView,
+  },
+  {
+    path: '/activity/:id/settings',
+    name: 'ActivitySettingsView',
+    component: ActivitySettingsView,
+  },
+  {
+    path: '/activity/:id/credit-history',
+    name: 'ActivityHistoryView',
+    component: ActivityHistoryView,
   },
 ]
 

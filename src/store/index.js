@@ -1,13 +1,13 @@
 import Vuex from 'vuex'
-import credit from './modules/credit'
-import products from './modules/products'
+import activities from './modules/activities'
+import title from './modules/title'
 
 export default Vuex.createStore({
   state: {},
   mutations: {},
   actions: {},
   modules: {
-    credit,
-    products,
+    activities,
+    title,
   },
 })

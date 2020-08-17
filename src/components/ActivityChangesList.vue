@@ -11,8 +11,8 @@
         <div class="amount">{{ change.amount }}€ - {{ change.description }}</div>
       </div>
       <div class="row">
-        <button @click="removeCreditChange(change)" class="small">
-          <img src="../../assets/delete-white-24dp.svg" alt="Delete" />
+        <button @click="removeActivityCreditChange(activity, change)" class="small">
+          <img src="../assets/delete-white-24dp.svg" alt="Delete" />
         </button>
       </div>
     </div>
@@ -22,14 +22,17 @@
 
 <script>
 import { ref } from 'vue'
-import useRemoveCreditChange from '../../composition/credit/useRemoveCreditChange'
-import useGetCreditChanges from '../../composition/credit/useGetCreditChanges'
-import useDateFormat from '../../composition/useDateFormat'
-import useGetCreditChangeYears from '../../composition/credit/useGetCreditChangeYears'
+import useDateFormat from '../composition/useDateFormat'
+import useGetActivityCreditChangeYears from '../composition/useGetActivityCreditChangeYears'
+import useGetActivityCreditChanges from '../composition/useGetActivityCreditChanges'
+import useRemoveActivityCreditChange from '../composition/useRemoveActivityCreditChange'
 
 export default {
-  name: 'CreditChanges',
+  name: 'ActivityChangesList',
   props: {
+    activity: {
+      default: null,
+    },
     limit: {
       default: 1000,
     },
@@ -39,16 +42,16 @@ export default {
   },
   setup(props) {
     const year = ref(new Date().getFullYear())
-    const { changes } = useGetCreditChanges(year.value, props.limit)
+    const { changes } = useGetActivityCreditChanges(props.activity, year.value, props.limit)
     const { dateFormat } = useDateFormat()
-    const { removeCreditChange } = useRemoveCreditChange()
-    const { creditChangeYears } = useGetCreditChangeYears()
+    const { removeActivityCreditChange } = useRemoveActivityCreditChange()
+    const { creditChangeYears } = useGetActivityCreditChangeYears(props.activity)
 
     return {
       year,
       changes,
       dateFormat,
-      removeCreditChange,
+      removeActivityCreditChange,
       creditChangeYears,
     }
   },

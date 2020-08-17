@@ -1,11 +1,16 @@
 <template>
-  <router-link :to="{ name: 'Home' }">Inicio</router-link>
-  <router-link :to="{ name: 'CreditHistory' }">Historial</router-link>
+  <router-link :to="{ name: 'ActivityView', params: { id: activityId } }">Inicio</router-link>
+  <router-link :to="{ name: 'ActivityHistoryView', params: { id: activityId } }">Historial</router-link>
 </template>
 
 <script>
 export default {
-  name: 'Tabsbar',
+  name: 'ActivityDetailTabs',
+  props: {
+    activityId: {
+      default: null,
+    },
+  },
 }
 </script>
 <style scoped>
