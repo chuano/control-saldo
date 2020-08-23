@@ -1,6 +1,3 @@
-import fixOldState from '../../util/fixOldState'
-fixOldState()
-
 const state = {
   activities: JSON.parse(localStorage.getItem('activities') || '[]'),
 }
