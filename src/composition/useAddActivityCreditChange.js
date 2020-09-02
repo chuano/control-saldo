@@ -4,12 +4,13 @@ import { useStore } from 'vuex'
 export default function useAddActivityCreditChange(activity) {
   const store = useStore()
   const productId = ref(null)
+  const dayDiff = ref(0)
 
   function addChangeToStore(amount, description) {
     const id = activity.changes.length === 0 ? 1 : activity.changes[0].id + 1
     const change = {
       id: id,
-      date: new Date(),
+      date: new Date().setDate(new Date().getDate() + dayDiff.value),
       amount: amount,
       description: description,
     }
@@ -30,7 +31,8 @@ export default function useAddActivityCreditChange(activity) {
 
     addChangeToStore(amount, description)
     productId.value = null
+    dayDiff.value = 0
   }
 
-  return { productId, addActivityCreditChange, addChangeToStore }
+  return { dayDiff, productId, addActivityCreditChange, addChangeToStore }
 }
