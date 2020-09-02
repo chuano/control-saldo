@@ -30,14 +30,14 @@ export default {
     updateTopbarTitle(activity.value.name)
 
     const displayAddCreditForm = () => {
-      const amount = convertNumber(prompt(`Agregar crédito a "${activity.value.name}".`, '') || 0)
-      if (amount === 0) return
-      if (isNaN(amount)) return alert('Debes introducir un número.')
-      credit.value = amount
+      credit.value = convertNumber(prompt(`Agregar crédito a "${activity.value.name}".`, '') || 0)
+      if (credit.value === 0) return
+      if (isNaN(credit.value)) return alert('Debes introducir un número.')
       addCredit()
     }
 
     const convertNumber = (amount) => {
+      if (!amount) return 0
       let converted = amount.indexOf(',') === -1 ? amount : amount.replace(/\./g, '').replace(',', '.')
       return parseFloat(converted)
     }
