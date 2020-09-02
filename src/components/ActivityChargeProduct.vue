@@ -8,7 +8,7 @@
     </select>
     <select v-model="dayDiff">
       <option v-for="days in daysList" :key="days" :value="days * -1">
-        <template v-if="days == 0">Hoy</template>
+        <template v-if="days === 0">Hoy</template>
         <template v-if="days === 1">Ayer</template>
         <template v-if="days > 1">Hace {{ days }} días</template>
       </option>
