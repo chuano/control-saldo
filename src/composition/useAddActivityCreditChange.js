@@ -20,6 +20,13 @@ export default function useAddActivityCreditChange(activity) {
   }
 
   function addActivityCreditChange() {
+    if (activity.products.length === 0) {
+      alert(
+        `Primero debes crear los productos, puedes hacerlo tocando el icono del engranaje.
+        \nEscribe el nombre del producto y el precio donde pone "Nuevo producto"`,
+      )
+      return
+    }
     if (!productId.value) {
       alert('Selecciona un producto')
       return
