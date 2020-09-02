@@ -8,7 +8,7 @@
   <div v-for="change in changes" :key="change.id" class="list-row">
     <div class="row">
       <div class="row">
-        <div class="amount">{{ change.amount }}€ - {{ change.description }}</div>
+        <div class="amount">{{ change.amount.toFixed(2) }}€ - {{ change.description }}</div>
       </div>
       <div class="row">
         <button @click="removeActivityCreditChange(activity, change)" class="small">

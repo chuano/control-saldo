@@ -1,5 +1,5 @@
 <template>
-  <card title="Tu saldo" :color="color">{{ activity.credit }} €</card>
+  <card title="Tu saldo" :color="color">{{ activity.credit.toFixed(2) }} €</card>
 </template>
 
 <script>
