@@ -1,6 +1,6 @@
 <template>
   <form action="#" @submit.prevent="addCredit">
-    <input type="number" step="0.5" placeholder="Importe" v-model="credit" />
+    <input type="number" placeholder="Importe" v-model="credit" />
     <button>
       <img src="../assets/add-white-36dp.svg" alt="Add" />
     </button>
