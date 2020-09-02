@@ -2,7 +2,7 @@
   <form action="#" @submit.prevent="save">
     <input type="text" v-model="name" placeholder="Nombre del producto" class="name" />
     <input type="number" step="0.5" v-model="price" placeholder="Precio" class="price" />
-    <button class="block">
+    <button>
       <img src="../assets/save-white-36dp.svg" alt="Save" />
     </button>
   </form>
@@ -32,10 +32,17 @@ export default {
 
 <style scoped>
 input.name {
-  width: calc(100% - 96px);
-  margin-right: 10px;
+  width: calc(60% - 20px);
 }
 input.price {
-  width: 50px;
+  width: calc(20% - 16px);
+  margin-left: 6px;
+}
+button {
+  vertical-align: middle;
+  margin-top: -1px;
+  width: calc(20% - 12px);
+  margin-left: 6px;
+  padding: 0;
 }
 </style>

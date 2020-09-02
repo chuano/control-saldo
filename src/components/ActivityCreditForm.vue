@@ -32,10 +32,11 @@ export default {
 button {
   vertical-align: middle;
   margin-top: -1px;
-  width: calc(25% - 17px);
+  width: calc(20% - 16px);
   margin-left: 8px;
+  padding: 0;
 }
 input {
-  width: calc(75% - 9px);
+  width: calc(80% - 10px);
 }
 </style>
