@@ -13,6 +13,11 @@
   </div>
 
   <div>
+    <h2>Eliminar actividad</h2>
+    <button class="block" @click="removeActivity">Eliminar esta actividad</button>
+  </div>
+
+  <div>
     <h2>Nuevo producto</h2>
     <activity-product-form class="new-form" :activity="activity" />
     <h2>Productos</h2>
@@ -26,6 +31,7 @@ import { useRoute } from 'vue-router'
 import useEditActivityTitle from '../composition/useEditActivityTitle'
 import useGetActivity from '../composition/useGetActivity'
 import useUpdateTopbarTitle from '../composition/useUpdateTopbarTitle'
+import useRemoveActivity from '../composition/useRemoveActivity'
 
 import ActivityProductForm from '../components/ActivityProductForm'
 import ActivityProductList from '../components/ActivityProductsList'
@@ -48,11 +54,17 @@ export default {
   setup() {
     const { params } = useRoute()
     const { activity } = useGetActivity(params.id)
+    const { removeActivity } = useRemoveActivity(params.id)
     const { title, saveTitle } = useEditActivityTitle(activity.value)
     const { updateTopbarTitle } = useUpdateTopbarTitle()
     updateTopbarTitle(activity.value.name)
 
-    return { activity, title, saveTitle }
+    return {
+      removeActivity,
+      activity,
+      title,
+      saveTitle,
+    }
   },
 }
 </script>
@@ -70,5 +82,8 @@ h2.nomargin {
 }
 .credit-viewer {
   margin-top: 6px;
+}
+button.block {
+  margin-top: 8px;
 }
 </style>
