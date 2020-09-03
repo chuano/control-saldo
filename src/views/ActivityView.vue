@@ -30,7 +30,7 @@ export default {
     updateTopbarTitle(activity.value.name)
 
     const displayAddCreditForm = () => {
-      credit.value = convertNumber(prompt(`Agregar crédito a "${activity.value.name}".`, '') || 0)
+      credit.value = convertNumber(prompt(`Agregar crédito a "${activity.value.name}".`, '0.0') || 0)
       if (credit.value === 0) return
       if (isNaN(credit.value)) return alert('Debes introducir un número.')
       addCredit()
