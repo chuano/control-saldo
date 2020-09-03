@@ -4,19 +4,20 @@
       {{ currentYear }}
     </option>
   </select>
-
-  <div v-for="change in changes" :key="change.id" class="list-row">
-    <div class="row">
+  <div class="wrapper">
+    <div v-for="change in changes" :key="change.id" class="list-row">
       <div class="row">
-        <div class="amount">{{ change.amount.toFixed(2) }}€ - {{ change.description }}</div>
+        <div class="row">
+          <div class="amount">{{ change.amount.toFixed(2) }}€ - {{ change.description }}</div>
+        </div>
+        <div class="row">
+          <button @click="removeActivityCreditChange(activity, change)" class="small">
+            <img src="../assets/delete-white-24dp.svg" alt="Delete" />
+          </button>
+        </div>
       </div>
-      <div class="row">
-        <button @click="removeActivityCreditChange(activity, change)" class="small">
-          <img src="../assets/delete-white-24dp.svg" alt="Delete" />
-        </button>
-      </div>
+      <div class="date">{{ dateFormat(change.date) }}</div>
     </div>
-    <div class="date">{{ dateFormat(change.date) }}</div>
   </div>
 </template>
 
@@ -81,5 +82,8 @@ h3 {
 select {
   width: 100%;
   margin-bottom: 16px;
+}
+.wrapper {
+  min-height: 80px;
 }
 </style>
