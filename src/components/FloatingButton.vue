@@ -17,7 +17,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .floating-button {
   position: fixed;
   z-index: 1000;
