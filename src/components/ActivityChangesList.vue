@@ -84,6 +84,6 @@ select {
   margin-bottom: 16px;
 }
 .wrapper {
-  min-height: 80px;
+  padding-bottom: 20px;
 }
 </style>
