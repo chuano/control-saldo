@@ -3,7 +3,14 @@
   <div class="container">
     <activity-detail :activity-id="$route.params.id" />
   </div>
-  <floating-button icon="add" @click="displayAddCreditForm" />
+  <floating-button icon="add" @click="openModal" />
+  <div class="modal" v-if="showModal">
+    <h2>Agregar saldo a "{{ activity.name.trim() }}"</h2>
+    <activity-credit-viewer :activity="activity" />
+    <input type="number" v-model="credit" id="credit-input" />
+    <button @click="addCredit" class="block">Agregar saldo</button>
+    <button @click="showModal = false" class="block">Volver</button>
+  </div>
 </template>
 
 <script>
@@ -14,6 +21,8 @@ import ActivityDetailTabs from '../components/ActivityDetailTabs'
 import ActivityDetail from '../components/ActivityDetail'
 import FloatingButton from '../components/FloatingButton'
 import useAddActivityCredit from '../composition/useAddActivityCredit'
+import ActivityCreditViewer from '../components/ActivityCreditViewer'
+import { ref } from 'vue'
 
 export default {
   name: 'ActivityView',
@@ -21,28 +30,22 @@ export default {
     ActivityDetail,
     ActivityDetailTabs,
     FloatingButton,
+    ActivityCreditViewer,
   },
   setup() {
     const { params } = useRoute()
     const { activity } = useGetActivity(params.id)
     const { updateTopbarTitle } = useUpdateTopbarTitle()
-    const { credit, addCredit } = useAddActivityCredit(activity.value)
     updateTopbarTitle(activity.value.name)
 
-    const displayAddCreditForm = () => {
-      credit.value = convertNumber(prompt(`Agregar crédito a "${activity.value.name}".`, '0.0') || 0)
-      if (credit.value === 0) return
-      if (isNaN(credit.value)) return alert('Debes introducir un número.')
-      addCredit()
+    const showModal = ref(false)
+    const { credit, addCredit } = useAddActivityCredit(activity.value)
+    const openModal = () => {
+      showModal.value = true
+      setTimeout(() => document.getElementById('credit-input').focus(), 300)
     }
 
-    const convertNumber = (amount) => {
-      if (!amount) return 0
-      let converted = amount.indexOf(',') === -1 ? amount : amount.replace(/\./g, '').replace(',', '.')
-      return parseFloat(converted)
-    }
-
-    return { displayAddCreditForm }
+    return { activity, openModal, showModal, credit, addCredit }
   },
 }
 </script>
@@ -53,5 +56,21 @@ export default {
 }
 .new-form {
   margin-bottom: 20px;
+}
+.modal {
+  background: #fff;
+  padding: 16px;
+  position: fixed;
+  top: 0;
+  height: 0;
+  width: calc(100% - 32px);
+  height: calc(100% - 32px);
+  z-index: 1001;
+}
+.modal button {
+  margin-bottom: 10px;
+}
+.modal input {
+  width: calc(100% - 18px);
 }
 </style>
