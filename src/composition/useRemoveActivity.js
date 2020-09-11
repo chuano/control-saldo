@@ -7,7 +7,6 @@ export default function useAddActivity(activityId) {
   const store = useStore()
   const router = useRouter()
   const { activity } = useGetActivity(activityId)
-  console.log(activity)
 
   function removeActivity() {
     if (!confirm(`¿Eliminar la actividad "${activity.value.name}"?`)) {
