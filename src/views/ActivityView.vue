@@ -73,4 +73,7 @@ export default {
 .modal input {
   width: calc(100% - 18px);
 }
+.floating-button {
+  background-color: dodgerblue;
+}
 </style>
