@@ -8,9 +8,7 @@
     </select>
     <select v-model="dayDiff">
       <option v-for="days in daysList" :key="days" :value="days * -1">
-        <template v-if="days === 0">Hoy</template>
-        <template v-if="days === 1">Ayer</template>
-        <template v-if="days > 1">Hace {{ days }} días</template>
+        <template>{{ textDate(days) }}</template>
       </option>
     </select>
     <button class="block">Anotar</button>
@@ -19,6 +17,7 @@
 
 <script>
 import useAddActivityCreditChange from '../composition/useAddActivityCreditChange'
+import { formatDate } from '../util/formatDate'
 
 export default {
   name: 'ActivityChargeProduct',
@@ -31,11 +30,22 @@ export default {
     const daysList = [0, 1, 2, 3, 4, 5, 6, 7]
     const { dayDiff, productId, addActivityCreditChange } = useAddActivityCreditChange(props.activity)
 
+    const textDate = (days) => {
+      const date = new Date()
+      date.setDate(new Date().getDate() - days)
+      if (days === 0) return `Hoy ${formatDate(date)}`
+      if (days === 1) return `Ayer ${formatDate(date)}`
+      if (days > 1) {
+        return `Hace ${days} días - ${formatDate(date)}`
+      }
+    }
+
     return {
       daysList,
       dayDiff,
       productId,
       addActivityCreditChange,
+      textDate,
     }
   },
 }
