@@ -3,6 +3,9 @@ const state = {
 }
 
 const mutations = {
+  setActivities(state, activities) {
+    state.activities = activities
+  },
   addActivity(state, activity) {
     state.activities.push(activity)
   },

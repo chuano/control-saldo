@@ -11,10 +11,20 @@
       </button>
     </div>
   </div>
+  <div class="row">
+    <div>
+      <button class="block-inline" @click="makeBackup">Guardar copia en la nube</button>
+    </div>
+    <div>
+      <button class="block-inline" @click="restoreBackup">Recuperar copia de la nube</button>
+    </div>
+  </div>
 </template>
 
 <script>
+import useBackup from '../composition/useBackup'
 import useGetActivities from '../composition/useGetActivities'
+import useRestore from '../composition/useRestore'
 
 export default {
   name: 'ActiviyList',
@@ -26,9 +36,13 @@ export default {
   },
   setup() {
     const { activities } = useGetActivities()
+    const { makeBackup } = useBackup()
+    const { restoreBackup } = useRestore()
 
     return {
       activities,
+      makeBackup,
+      restoreBackup,
     }
   },
 }
@@ -45,5 +59,10 @@ export default {
 }
 button.block {
   height: 40vw;
+}
+button.block-inline {
+  width: 100%;
+  height: 20vw;
+  background-color: dodgerblue;
 }
 </style>
