@@ -20,8 +20,13 @@ export default function useAddActivityProduct(activity) {
   }
 
   function save() {
+    const floatPrice = parseFloat(price.value)
+    if (isNaN(floatPrice)) {
+      alert('El precio debe ser numérico.')
+      return
+    }
     try {
-      addProduct({ name: name.value, price: price.value })
+      addProduct({ name: name.value, price: floatPrice })
       name.value = null
       price.value = null
     } catch (e) {

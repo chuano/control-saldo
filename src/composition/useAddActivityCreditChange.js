@@ -8,13 +8,19 @@ export default function useAddActivityCreditChange(activity) {
 
   function addChangeToStore(amount, description) {
     const id = activity.changes.length === 0 ? 1 : activity.changes[0].id + 1
+    const floatAmount = parseFloat(amount)
+    if (isNaN(floatAmount)) {
+      alert('El importe debe ser numérico')
+      return
+    }
+
     const change = {
       id: id,
       date: new Date().setDate(new Date().getDate() + dayDiff.value),
-      amount: amount,
+      amount: floatAmount,
       description: description,
     }
-    activity.credit += amount
+    activity.credit += floatAmount
     activity.changes.unshift(change)
     store.commit('updateActivity', activity)
   }
