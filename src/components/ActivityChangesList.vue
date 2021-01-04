@@ -22,11 +22,12 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import useDateFormat from '../composition/useDateFormat'
 import useGetActivityCreditChangeYears from '../composition/useGetActivityCreditChangeYears'
-import useGetActivityCreditChanges from '../composition/useGetActivityCreditChanges'
+//import useGetActivityCreditChanges from '../composition/useGetActivityCreditChanges'
 import useRemoveActivityCreditChange from '../composition/useRemoveActivityCreditChange'
+import { compareProperty } from '../util/compareProperty'
 
 export default {
   name: 'ActivityChangesList',
@@ -43,10 +44,15 @@ export default {
   },
   setup(props) {
     const year = ref(new Date().getFullYear())
-    const { changes } = useGetActivityCreditChanges(props.activity, year.value, props.limit)
     const { dateFormat } = useDateFormat()
     const { removeActivityCreditChange } = useRemoveActivityCreditChange()
     const { creditChangeYears } = useGetActivityCreditChangeYears(props.activity)
+    //const { changes } = useGetActivityCreditChanges(props.activity, year.value, props.limit)
+    const changes = computed(() => {
+      const yearChanges = props.activity.changes.filter((c) => new Date(c.date).getFullYear() === year.value)
+      yearChanges.sort(compareProperty('date', 'desc'))
+      return yearChanges.slice(0, props.limit)
+    })
 
     return {
       year,
