@@ -1,7 +1,7 @@
 <template>
   <form action="#" @submit.prevent="save">
     <input type="text" v-model="name" placeholder="Nombre del producto" class="name" />
-    <input type="number" step="0.5" v-model="price" placeholder="Precio" class="price" />
+    <input type="number" step="0.01" v-model="price" placeholder="Precio" class="price" />
     <button>
       <img src="../assets/save-white-36dp.svg" alt="Save" />
     </button>
