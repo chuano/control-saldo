@@ -63,3 +63,9 @@ button.small {
   justify-content: space-between;
   flex-wrap: wrap;
 }
+.text-right {
+  text-align: right;
+}
+.ml {
+  margin-left: 10px;
+}

@@ -2,7 +2,8 @@
   <div v-for="product in products" :key="product.id" class="row">
     <div>{{ product.name }}</div>
     <div>
-      <button @click="removeProduct(product)" class="small">
+      {{ product.price.toFixed(2) }} €
+      <button @click="removeProduct(product)" class="ml small">
         <img src="../assets/delete-white-24dp.svg" alt="Delete" />
       </button>
     </div>
