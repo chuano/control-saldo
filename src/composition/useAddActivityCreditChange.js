@@ -4,9 +4,9 @@ import { useStore } from 'vuex'
 export default function useAddActivityCreditChange(activity) {
   const store = useStore()
   const productId = ref(null)
-  const dayDiff = ref(0)
+  const day = ref(new Date())
 
-  function addChangeToStore(amount, description) {
+  function addChangeToStore(amount, description, date) {
     const id = activity.changes.length === 0 ? 1 : activity.changes[0].id + 1
     const floatAmount = parseFloat(amount)
     if (isNaN(floatAmount)) {
@@ -16,7 +16,7 @@ export default function useAddActivityCreditChange(activity) {
 
     const change = {
       id: id,
-      date: new Date().setDate(new Date().getDate() + dayDiff.value),
+      date: date,
       amount: floatAmount,
       description: description,
     }
@@ -42,10 +42,10 @@ export default function useAddActivityCreditChange(activity) {
     const amount = product.price * -1
     const description = product.name
 
-    addChangeToStore(amount, description)
+    addChangeToStore(amount, description, day.value.getTime())
     productId.value = null
-    dayDiff.value = 0
+    day.value = new Date()
   }
 
-  return { dayDiff, productId, addActivityCreditChange, addChangeToStore }
+  return { day, productId, addActivityCreditChange, addChangeToStore }
 }
