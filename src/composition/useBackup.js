@@ -10,7 +10,7 @@ export default function useBackup() {
       const { makeToken } = useBackupToken()
       const id = Math.round(Math.random() * 10000)
       const token = makeToken(id)
-      await Axios.post(`https://chuano.net/control-saldo/post.php?id=${id}&token=${token}`, activities)
+      await Axios.post(`https://chuano.dev/control-saldo/post.php?id=${id}&token=${token}`, activities)
       alert(`Copia de seguridad realizada, tu código de recuperación es ${id}.
         Con él podrás recuperar tus datos en otro dispositivo`)
     } catch (e) {
